@@ -25,4 +25,14 @@ function verificarConsumo(id){
     }
 }
 
-export { criarEmpresa, buscarTodasEmpresas, verificarConsumo }
+function alterarConsumo(id, novoConsumo){
+    const empresaIndex = listaEmpresas.findIndex(empresa => empresa.id === id);
+    if(id){
+        listaEmpresas[empresaIndex].consumo = novoConsumo;
+        return listaEmpresas[empresaIndex];
+    }else {
+        return "Empresa não encontrada!"
+    }
+}
+
+export { criarEmpresa, buscarTodasEmpresas, verificarConsumo, alterarConsumo }

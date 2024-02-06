@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { criarEmpresa, buscarTodasEmpresas, verificarConsumo } from "../controllers/Empresa.controller.js"
+import { criarEmpresa, buscarTodasEmpresas, verificarConsumo, alterarConsumo } from "../controllers/Empresa.controller.js"
 
 const empresaRoute = Router();
 
@@ -18,6 +18,12 @@ empresaRoute.get("/verificar-consumo", (req, res) => {
     const { id } = req.body;
     const verificar = verificarConsumo(id);
     res.status(201).json(verificar);
+});
+
+empresaRoute.patch("/alterar-consumo", (req, res) => {
+    const { id, novoConsumo } = req.body;
+    const consumoAlterado = alterarConsumo(id, novoConsumo);
+    res.status(201).json(consumoAlterado);
 });
 
 export { empresaRoute }
